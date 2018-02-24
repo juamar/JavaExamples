@@ -16,7 +16,7 @@ import java.util.Vector;
 
 public class MainActivity extends Activity {
 
-    private int[][] almacenPanes = {{3},{2},{5},{1},{4}};
+    private int[] almacenPanes = {3,2,5,1,4};
     private Vector<String> tiposDePanes;
     private ArrayList<String> clientes = new ArrayList<String>();
     private Stack<String> platos;
@@ -31,7 +31,7 @@ public class MainActivity extends Activity {
         setContentView(R.layout.activity_main);
 
         //supongamos que sacamos un pan de tipo mantequilla
-        almacenPanes[4][0]--;
+        almacenPanes[4]--;
 
         recorrerAlmacenPanes();
         //Escribamos pan del 0 al 4, 5 opciones.
@@ -61,7 +61,7 @@ public class MainActivity extends Activity {
                 System.out.println("la fila de pan de tipo " + fila + " tiene " + almacenPanes[fila][col] + " panes.");
              }**/
 
-            System.out.println("la fila de pan de tipo " + fila + " tiene " + almacenPanes[fila][0] + " panes.");
+            System.out.println("la fila de pan de tipo " + fila + " tiene " + almacenPanes[fila] + " panes.");
         }
     }
 
@@ -69,10 +69,14 @@ public class MainActivity extends Activity {
     public void hacerPan(int idPan)
     {
         System.out.printf("\n\n********** HACER PAN **********\n\n");
-        switch (idPan)
+
+        almacenPanes[idPan]++;
+        System.out.println("Has agregado un pan en la fila" + idPan);
+
+        /*switch (idPan)
         {
             case 0:
-                almacenPanes[0][0]++;
+                almacenPanes[idpan][0]++;
                 System.out.println("Has agregado un pan en la fila 0");
                 break;
             case 1:
@@ -94,7 +98,22 @@ public class MainActivity extends Activity {
             default:
                 System.out.println("opcion invalida");
                 break;
+        }*/
+        /*
+        if (idPan == 0)
+        {
+            almacenPanes[0][0]++;
+            System.out.println("Has agregado un pan en la fila 0");
         }
+        else if (idPan == 1)
+        {
+            almacenPanes[1][0]++;
+            System.out.println("Has agregado un pan en la fila 1");
+        }
+        else
+        {
+            System.out.println("opcion invalida");
+        }*/
         //¿Quien visualiza que esto es una tonteria?
     }
 
@@ -110,17 +129,17 @@ public class MainActivity extends Activity {
         tiposDePanes.add("Pan integral");
         tiposDePanes.add("Pan de mantequilla");
 
-        int i=0;
+        /*int i=0;
         //Dos formas diferentes:
         for (String tipo: tiposDePanes)
         {
             System.out.println("tipo " + i + ": " + tipo);
             i++;
-        }/*
+        }*/
         for (int j = 0; j < tiposDePanes.size(); j++)
         {
             System.out.println("tipo " + j + ": " + tiposDePanes.get(j));
-        }*/
+        }
 
         /**La gracia de utilizar vectores es que es más facil gestionarlo cuando varios hilos quieren acceder a él,
          * y ya nos abstrae la funcionalidad de un array.
@@ -197,12 +216,12 @@ public class MainActivity extends Activity {
             System.out.println(platos.get(x));
         }*/
 
-        /* ¿Que pasaría con este código?
-        while(!platos.isEmpty())
+        // ¿Que pasaría con este código?
+        /*while(!platos.isEmpty())
         {
             System.out.println(platos.peek());
         }*/
-
+/*
         //Para ver los platos en el orden del pop sin cargarnos los platos:
         System.out.println("Listamos sin cargarnos los platos:".toUpperCase());
         Stack<String> platosClone = (Stack<String>) platos.clone();
@@ -210,7 +229,7 @@ public class MainActivity extends Activity {
         while(!platosClone.isEmpty())
         {
             System.out.println(platosClone.pop());
-        }
+        }*/
 
     }
 
@@ -226,6 +245,8 @@ public class MainActivity extends Activity {
             clientesMap.put(x, r.nextInt(1000)+1);
             System.out.println("Cliente " + x +" tiene un credito de " + clientesMap.get(x) + " Euros");
         }
+
+        //clientesMap.put(25,500);
 
         //Recorremos
         //Aqui el ForEach no nos vale
@@ -251,15 +272,15 @@ public class MainActivity extends Activity {
             System.out.println(cliente.toString());
         }*/
 
-/*
-        ArrayList<String> nombres = new ArrayList<String>();
-        nombres.addAll(clientesMap.values());
+
+/*        ArrayList<Integer> nombres = new ArrayList<Integer>(); // Corregido!
+        nombres.addAll(clientesMap.values()); //solo los valores
 
         for (Object cliente: nombres)
         {
             System.out.println(cliente.toString());
-        }*/
-
+        }
+*/
     }
 
     public void recorrerPanesTree()
@@ -282,7 +303,7 @@ public class MainActivity extends Activity {
         panesTree.put("dedo", "Pan integral");
         panesTree.put("elefante", "Pan de mantequill");
         panesTree.put("elefante", "Pan de mantequilla");
-        panesTree.put("elefante", "Pan de mantequilla");
+        panesTree.put("elefante", "Pan de mantequi");
         panesTree.put("clase", "Pan de mantequilla");
 
         //Listamos:
@@ -307,18 +328,18 @@ public class MainActivity extends Activity {
         System.out.printf("\n\n********** JUGAR CON NUMEROS **********\n\n");
 
         numeros = new HashSet();
-        numeros.add("juan");
+        /*numeros.add("juan");
         numeros.add("Juan");
         numeros.add("Pedro");
         numeros.add("Pedro");
         numeros.add("Pablo");
-        numeros.add("ramon");
+        numeros.add("ramon");*/
 
-        /*numeros.add(1);
+        numeros.add(1);
         numeros.add(2);
         numeros.add(3);
         numeros.add(4);
-        numeros.add(4);*/
+        numeros.add(4);
 
         //Listamos:
         Iterator i = numeros.iterator();
